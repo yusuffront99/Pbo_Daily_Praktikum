@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pbo_2;
+package pbo_2_praktikum;
 
 /**
  *
  * @author myusu
  */
-public class PBO_2 {
+public class PBO_2_Praktikum {
 
     /**
      * @param args the command line arguments

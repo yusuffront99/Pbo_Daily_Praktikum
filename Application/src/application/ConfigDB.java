@@ -204,7 +204,8 @@ public class ConfigDB {
     }
     //================ END UPDATE DATA
     
-    
+    //================ DELETE DATA
+   
     //================ SHOW DATABASE TO TABLE
    
 }

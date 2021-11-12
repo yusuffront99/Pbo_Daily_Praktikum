@@ -63,10 +63,20 @@ public class FrameFilm extends javax.swing.JFrame {
         jLabel2.setText("Judul");
 
         jUbah.setText("Ubah");
+        jUbah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jUbahActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Genre");
 
         jHapus.setText("Hapus");
+        jHapus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jHapusActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("Tahun");
 
@@ -227,6 +237,27 @@ public class FrameFilm extends javax.swing.JFrame {
         // TODO add your handling code here:
         
     }//GEN-LAST:event_jDataFilmsComponentShown
+
+    private void jUbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jUbahActionPerformed
+        // TODO add your handling code here:
+        String tKode = txtKodeFilm.getText();
+        String tJudul = txtJudul.getText();
+        String tGenre = txtGenre.getText();
+        String tTahun = txtTahun.getText();
+        String tAsal = txtAsal.getText();
+        String tStok = txtStok.getText();
+        
+        String[] Fields = {"Judul","Genre","Tahun","Asal","Stok"};
+        String[] Values = {tJudul, tGenre, tTahun, tAsal, tStok};
+        
+        new ConfigDB().ubahData("film", "KodeFilm", tKode, Fields, Values);
+    }//GEN-LAST:event_jUbahActionPerformed
+
+    private void jHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jHapusActionPerformed
+        // TODO add your handling code here:
+        String tKode = txtKodeFilm.getText();
+        new ConfigDB().HapusDinamis("film", "KodeFilm", tKode);
+    }//GEN-LAST:event_jHapusActionPerformed
 
     /**
      * @param args the command line arguments

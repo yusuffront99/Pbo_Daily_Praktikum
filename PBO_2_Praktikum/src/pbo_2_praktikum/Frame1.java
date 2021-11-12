@@ -269,27 +269,43 @@ public class Frame1 extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
             // TODO add your handling code here:
-            BufferedWriter out = new BufferedWriter(new FileWriter("nilai.txt"));
+            BufferedWriter out = new BufferedWriter(new FileWriter("nilai.txt")); 
+            
             String name = jnamainput.getText();
             lblnamaoutput.setText(name);
-      
-            String hasil = 
-                    namaLabel.getText()+':'+lblnamaoutput.getText()+'\n'+
-                    nilaiLabel.getText()+':'+lblratarata.getText()+'\n'+
-                    gradeLabel.getText()+':'+lblgrade.getText()+'\n'+
-                    hasilLabel.getText()+':'+lblhasil.getText()
-                    ;
-                    
-            out.write(hasil);
-            JOptionPane.showMessageDialog(null, "Data berhasil disimpan");
-            out.close();
+            
+            if(name.equals("")){
+                JOptionPane.showMessageDialog(null, "Masukkan nama terlebih dahulu");
+            }else if(jmandiri.getText().equals("")){
+                JOptionPane.showMessageDialog(null, "Data tidak boleh kosong");
+                jmandiri.requestFocus();
+            }else if(juts.getText().equals("")){
+                JOptionPane.showMessageDialog(null, "Data tidak boleh kosong");
+                juts.requestFocus();   
+            }else if(juas.getText().equals("")){
+                JOptionPane.showMessageDialog(null, "Data tidak boleh kosong");
+                juas.requestFocus();
+            }else if(lblratarata.getText().equals("")){
+                JOptionPane.showMessageDialog(null, "Anda belum mengklik tombol hitung");
+                lblratarata.requestFocus();  
+            }else{
+                String hasil = 
+                namaLabel.getText()+':'+lblnamaoutput.getText()+'\n'+
+                nilaiLabel.getText()+':'+lblratarata.getText()+'\n'+
+                gradeLabel.getText()+':'+lblgrade.getText()+'\n'+
+                hasilLabel.getText()+':'+lblhasil.getText()
+                ;
+                out.write(hasil);
+                JOptionPane.showMessageDialog(null, "Data berhasil disimpan");
+                out.close();
+            }
         } catch (Exception err) {
             System.out.println(err.toString());
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+
         double mandiri = Double.parseDouble(jmandiri.getText());
         double uts = Double.parseDouble(juts.getText());
         double uas = Double.parseDouble(juas.getText());

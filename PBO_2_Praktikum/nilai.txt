@@ -1,4 +1,4 @@
 Nama:ahmad
-Nilai Rata-rata:70.0
-Grade:C
+Nilai Rata-rata:75.0
+Grade:B
 Hasil:Lulus

@@ -5,6 +5,7 @@
  */
 package pbo_2_praktikum;
 
+import com.sun.glass.events.KeyEvent;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -167,6 +168,24 @@ public class Frame1 extends javax.swing.JFrame {
 
         jLabel4.setText("Nilai UAS");
 
+        juts.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jutsKeyTyped(evt);
+            }
+        });
+
+        juas.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                juasKeyTyped(evt);
+            }
+        });
+
+        jmandiri.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jmandiriKeyTyped(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -220,6 +239,11 @@ public class Frame1 extends javax.swing.JFrame {
         });
 
         jButton3.setText("Bersihkan");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -335,6 +359,48 @@ public class Frame1 extends javax.swing.JFrame {
         
                 
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        jnamainput.setText("");
+        jmandiri.setText("");
+        juts.setText("");
+        juas.setText("");
+        lblnamaoutput.setText("");
+        lblratarata.setText("");
+        lblgrade.setText("");
+        lblhasil.setText("");
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jmandiriKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jmandiriKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        if(!(Character.isDigit(c))||( c == KeyEvent.VK_ENTER)){
+            getToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Silakan masukkan Angka saja");
+            evt.consume();
+        }
+    }//GEN-LAST:event_jmandiriKeyTyped
+
+    private void jutsKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jutsKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        if(!(Character.isDigit(c))||( c == KeyEvent.VK_ENTER)){
+            getToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Silakan masukkan Angka saja");
+            evt.consume();
+        }
+    }//GEN-LAST:event_jutsKeyTyped
+
+    private void juasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_juasKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        if(!(Character.isDigit(c))||( c == KeyEvent.VK_ENTER)){
+            getToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Silakan masukkan Angka saja");
+            evt.consume();
+        }
+    }//GEN-LAST:event_juasKeyTyped
 
     /**
      * @param args the command line arguments

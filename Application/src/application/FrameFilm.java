@@ -13,6 +13,8 @@ import javax.swing.table.DefaultTableModel;
  * @author myusu
  */
 public class FrameFilm extends javax.swing.JFrame {
+    
+    String[] Judul = {"KodeFilm","Judul","Genre","Tahun","Asal","Stok"};
 
     /**
      * Creates new form FrameFilm
@@ -20,6 +22,7 @@ public class FrameFilm extends javax.swing.JFrame {
     public FrameFilm() {
         initComponents();
         setLocationRelativeTo(null);
+        new ConfigDB().setJudulKolom(jtblFilm, Judul);
     }
 
     /**
@@ -47,7 +50,7 @@ public class FrameFilm extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         txtStok = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jDataFilms = new javax.swing.JTable();
+        jtblFilm = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -84,7 +87,7 @@ public class FrameFilm extends javax.swing.JFrame {
 
         jLabel6.setText("Stok");
 
-        jDataFilms.setModel(new javax.swing.table.DefaultTableModel(
+        jtblFilm.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -95,17 +98,17 @@ public class FrameFilm extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jDataFilms.addMouseListener(new java.awt.event.MouseAdapter() {
+        jtblFilm.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jDataFilmsMouseClicked(evt);
+                jtblFilmMouseClicked(evt);
             }
         });
-        jDataFilms.addComponentListener(new java.awt.event.ComponentAdapter() {
+        jtblFilm.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
-                jDataFilmsComponentShown(evt);
+                jtblFilmComponentShown(evt);
             }
         });
-        jScrollPane1.setViewportView(jDataFilms);
+        jScrollPane1.setViewportView(jtblFilm);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -228,15 +231,15 @@ public class FrameFilm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jSimpanActionPerformed
 
-    private void jDataFilmsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jDataFilmsMouseClicked
+    private void jtblFilmMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtblFilmMouseClicked
         // TODO add your handling code here:
         
-    }//GEN-LAST:event_jDataFilmsMouseClicked
+    }//GEN-LAST:event_jtblFilmMouseClicked
 
-    private void jDataFilmsComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jDataFilmsComponentShown
+    private void jtblFilmComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jtblFilmComponentShown
         // TODO add your handling code here:
         
-    }//GEN-LAST:event_jDataFilmsComponentShown
+    }//GEN-LAST:event_jtblFilmComponentShown
 
     private void jUbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jUbahActionPerformed
         // TODO add your handling code here:
@@ -295,7 +298,6 @@ public class FrameFilm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable jDataFilms;
     private javax.swing.JButton jHapus;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -306,6 +308,7 @@ public class FrameFilm extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jSimpan;
     private javax.swing.JButton jUbah;
+    private javax.swing.JTable jtblFilm;
     private javax.swing.JTextField txtAsal;
     private javax.swing.JTextField txtGenre;
     private javax.swing.JTextField txtJudul;

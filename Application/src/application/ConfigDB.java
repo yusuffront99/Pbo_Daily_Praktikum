@@ -13,7 +13,8 @@ import java.sql.Statement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
-import javax.swing.*;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -206,6 +207,21 @@ public class ConfigDB {
     
     //================ DELETE DATA
    
-    //================ SHOW DATABASE TO TABLE
+    //================================================================ SHOW DATABASE TO TABLE ===================================================
+    //===========================================================================================================================================
+    
+    //**************** METHOD TABLES
+    public void setJudulKolom(JTable Table, String[] JudulKolom){
+        try {
+            DefaultTableModel model = new DefaultTableModel();
+            Table.setModel(model);
+            
+            for (int i = 0; i < JudulKolom.length; i++) {
+                model.addColumn(JudulKolom[i]);
+            }
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+    }
    
 }

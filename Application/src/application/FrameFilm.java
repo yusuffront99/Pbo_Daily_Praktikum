@@ -14,8 +14,8 @@ import javax.swing.table.DefaultTableModel;
  */
 public class FrameFilm extends javax.swing.JFrame {
     
-    String[] Judul = {"KodeFilm","Judul","Genre","Tahun","Asal","Stok"};
-
+    String[] Judul = {"Kode Film","Judul Film","Genre","Tahun","Asal","Stok"};
+    int[] WidthColumnFilm = {120,220,200,100,200,100};
     /**
      * Creates new form FrameFilm
      */
@@ -23,6 +23,7 @@ public class FrameFilm extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         new ConfigDB().setJudulKolom(jtblFilm, Judul);
+        new ConfigDB().setWidhtTitColumn(jtblFilm, WidthColumnFilm);
     }
 
     /**

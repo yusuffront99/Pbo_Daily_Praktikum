@@ -227,9 +227,15 @@ public class ConfigDB {
     }
     
     //-----------------------------------------------
-    public void setWidhtTitColumn(JTable Table, int[] WidthColumn){
+    public void setWidhtTitColumn(JTable Table, int[] WidthColumnTo){
         try {
+            TableColumn ColumnTo = new TableColumn();
+            Table.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
             
+            for (int i = 0; i < WidthColumnTo.length; i++) {
+                ColumnTo = Table.getColumnModel().getColumn(i);
+                ColumnTo.setPreferredWidth(WidthColumnTo[i]);
+            }
         } catch (Exception e) {
             System.out.println(e.toString());
         }

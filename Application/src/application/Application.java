@@ -22,12 +22,12 @@ public class Application {
         
         String[] F = {"Judul","Genre","Tahun","Asal","Stok"};        
         String[] V = {"Captain","Actions","2010","ID","22"};
-
-        
+//
+//        
         ConfigDB praktikum = new ConfigDB();
-        System.out.println(praktikum.getDoubleArrays(F, V));
-        praktikum.ubahData("film", "KodeFilm", "01", F, V);
-        
+//        System.out.println(praktikum.getDoubleArrays(F, V));
+//        praktikum.ubahData("film", "KodeFilm", "01", F, V);
+          System.out.println(String.valueOf(praktikum.TableFills("SELECT*FROM film", 6)));
     }
     
 }

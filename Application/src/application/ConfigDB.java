@@ -240,5 +240,40 @@ public class ConfigDB {
             System.out.println(e.toString());
         }
     }
+    
+    //---------------------- OBJECT CONVERTION 
+    public Object[][] TableFills(String SQL, int nColumns){
+        Object[][] data = null;
+        
+        try {
+            Statement command = getConnect().createStatement();
+            ResultSet dataset = command.executeQuery(SQL);
+            dataset.last();
+            int nRows = dataset.getRow();
+            dataset.beforeFirst();
+            
+            int j = 0;
+            data = new Object[nRows][nColumns];
+            while (dataset.next()) {                
+                for (int i = 0; i < nColumns; i++) {
+                    data[j][i] = dataset.getString(i+1);
+                }
+                j++;
+            }
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+        
+        return data;
+    }
+    
+    //---------------------- CATCH 
+    public void setShowTable(JTable Table, String[] Title, String SQL){
+        try {
+            Table.setModel(new DefaultTableModel(TableFills(SQL, Title.length), Title));
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+    }
    
 }

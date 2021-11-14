@@ -15,6 +15,8 @@ import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+//set witdh column
+import javax.swing.table.TableColumn;
 
 /**
  *
@@ -219,6 +221,15 @@ public class ConfigDB {
             for (int i = 0; i < JudulKolom.length; i++) {
                 model.addColumn(JudulKolom[i]);
             }
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+    }
+    
+    //-----------------------------------------------
+    public void setWidhtTitColumn(JTable Table, int[] WidthColumn){
+        try {
+            
         } catch (Exception e) {
             System.out.println(e.toString());
         }

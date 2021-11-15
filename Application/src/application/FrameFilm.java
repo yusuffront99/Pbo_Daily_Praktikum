@@ -16,7 +16,7 @@ public class FrameFilm extends javax.swing.JFrame {
     
     String[] Judul = {"Kode Film","Judul Film","Genre","Tahun","Asal","Stok"};
     int[] WidthColumnFilm = {120,220,200,100,200,100};
-    String[] SQL = {"SELECT * FROM film"};
+    String SQL = "SELECT * FROM film";
     /**
      * Creates new form FrameFilm
      */
@@ -24,7 +24,7 @@ public class FrameFilm extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         new ConfigDB().setJudulKolom(jtblFilm, Judul);
-        new ConfigDB().setShowTable(jtblFilm, Judul, SQL[0]);
+        new ConfigDB().setShowTable(jtblFilm, Judul, SQL);
         new ConfigDB().setWidhtTitColumn(jtblFilm, WidthColumnFilm);
     }
 
@@ -231,6 +231,9 @@ public class FrameFilm extends javax.swing.JFrame {
         
         new ConfigDB().simpanData("film", F, V);
         JOptionPane.showMessageDialog(null, "Saved Successfully");
+        new ConfigDB().setJudulKolom(jtblFilm, Judul);
+        new ConfigDB().setShowTable(jtblFilm, Judul, SQL);
+        new ConfigDB().setWidhtTitColumn(jtblFilm, WidthColumnFilm);
         }
     }//GEN-LAST:event_jSimpanActionPerformed
 
@@ -263,12 +266,18 @@ public class FrameFilm extends javax.swing.JFrame {
         String[] Values = {tJudul, tGenre, tTahun, tAsal, tStok};
         
         new ConfigDB().ubahData("film", "KodeFilm", tKode, Fields, Values);
+        new ConfigDB().setJudulKolom(jtblFilm, Judul);
+        new ConfigDB().setShowTable(jtblFilm, Judul, SQL);
+        new ConfigDB().setWidhtTitColumn(jtblFilm, WidthColumnFilm);
     }//GEN-LAST:event_jUbahActionPerformed
 
     private void jHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jHapusActionPerformed
         // TODO add your handling code here:
         String tKode = txtKodeFilm.getText();
         new ConfigDB().HapusDinamis("film", "KodeFilm", tKode);
+        new ConfigDB().setJudulKolom(jtblFilm, Judul);
+        new ConfigDB().setShowTable(jtblFilm, Judul, SQL);
+        new ConfigDB().setWidhtTitColumn(jtblFilm, WidthColumnFilm);
     }//GEN-LAST:event_jHapusActionPerformed
 
     /**

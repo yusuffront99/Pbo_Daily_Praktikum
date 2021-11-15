@@ -217,6 +217,8 @@ public class ConfigDB {
         try {
             DefaultTableModel model = new DefaultTableModel();
             Table.setModel(model);
+            model.getDataVector().removeAllElements();
+            model.fireTableDataChanged();
             
             for (int i = 0; i < JudulKolom.length; i++) {
                 model.addColumn(JudulKolom[i]);
@@ -270,6 +272,7 @@ public class ConfigDB {
     //---------------------- CATCH 
     public void setShowTable(JTable Table, String[] Title, String SQL){
         try {
+            
             Table.setModel(new DefaultTableModel(TableFills(SQL, Title.length), Title));
         } catch (Exception e) {
             System.out.println(e.toString());

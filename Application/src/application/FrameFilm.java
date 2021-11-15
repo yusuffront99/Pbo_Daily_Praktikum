@@ -237,6 +237,7 @@ public class FrameFilm extends javax.swing.JFrame {
     private void jtblFilmMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtblFilmMouseClicked
         // TODO add your handling code here:
         
+        
     }//GEN-LAST:event_jtblFilmMouseClicked
 
     private void jtblFilmComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jtblFilmComponentShown

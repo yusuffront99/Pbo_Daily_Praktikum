@@ -236,8 +236,13 @@ public class FrameFilm extends javax.swing.JFrame {
 
     private void jtblFilmMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtblFilmMouseClicked
         // TODO add your handling code here:
-        
-        
+        int row = jtblFilm.getSelectedRow();
+        txtKodeFilm.setText(jtblFilm.getModel().getValueAt(row, 0).toString());
+        txtJudul.setText(jtblFilm.getModel().getValueAt(row, 1).toString());
+        txtGenre.setText(jtblFilm.getModel().getValueAt(row, 2).toString());
+        txtTahun.setText(jtblFilm.getModel().getValueAt(row, 3).toString());
+        txtAsal.setText(jtblFilm.getModel().getValueAt(row, 4).toString());
+        txtStok.setText(jtblFilm.getModel().getValueAt(row, 5).toString());            
     }//GEN-LAST:event_jtblFilmMouseClicked
 
     private void jtblFilmComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jtblFilmComponentShown

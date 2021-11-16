@@ -272,8 +272,16 @@ public class ConfigDB {
     //---------------------- CATCH 
     public void setShowTable(JTable Table, String[] Title, String SQL){
         try {
-            
             Table.setModel(new DefaultTableModel(TableFills(SQL, Title.length), Title));
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+    }
+    
+    //---------------------- DATA SEARCH
+    public void DataSearch(JTable Table, String[] TitleColumn, String SQLSearch){
+        try {
+            Table.setModel(new DefaultTableModel(TableFills(SQLSearch, TitleColumn.length),TitleColumn));
         } catch (Exception e) {
             System.out.println(e.toString());
         }

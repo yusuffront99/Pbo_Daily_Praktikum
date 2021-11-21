@@ -73,9 +73,9 @@ public class FrameAnggota extends javax.swing.JFrame {
         cbJk = new javax.swing.JComboBox<>();
         txtTanggalLahir = new javax.swing.JTextField();
         hapus1 = new javax.swing.JButton();
-        txtCariData = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        txtSearchData = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -322,17 +322,22 @@ public class FrameAnggota extends javax.swing.JFrame {
                 .addGap(43, 43, 43))
         );
 
-        txtCariData.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtCariDataKeyPressed(evt);
-            }
-        });
-
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel9.setText("Cari Data");
 
         jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\myusu\\OneDrive\\Dokumen\\Gambar\\ICONS\\printer.png")); // NOI18N
         jButton1.setText("PRINT");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        txtSearchData.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSearchDataKeyReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -349,8 +354,8 @@ public class FrameAnggota extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 736, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtCariData, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addComponent(txtSearchData, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel9))
                             .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(11, 11, 11)))
@@ -367,8 +372,8 @@ public class FrameAnggota extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(12, 12, 12)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtCariData, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9))
+                            .addComponent(jLabel9)
+                            .addComponent(txtSearchData, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -424,6 +429,7 @@ public class FrameAnggota extends javax.swing.JFrame {
         if(dtglLahir.getDate() !=null){
             SimpleDateFormat format_tanggal = new SimpleDateFormat("yyyy-MM-dd");
             tgl = format_tanggal.format(dtglLahir.getDate());
+            
         }
         txtTanggalLahir.setText(tgl);
     }//GEN-LAST:event_dtglLahirPropertyChange
@@ -493,14 +499,6 @@ public class FrameAnggota extends javax.swing.JFrame {
         
     }//GEN-LAST:event_clearActionPerformed
 
-    private void txtCariDataKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCariDataKeyPressed
-        // TODO add your handling code here:
-        String SQL = "SELECT * FROM anggota WHERE IDAnggota LIKE '%"+txtCariData.getText()+"%' OR nama LIKE '%"+txtCariData.getText()+"%'";
-        new ConfigDB().setJudulKolom(jtblAnggota, Judul);
-        new ConfigDB().DataSearch(jtblAnggota, Judul, SQL);
-        new ConfigDB().setWidhtTitColumn(jtblAnggota, WidthColumnFilm);
-    }//GEN-LAST:event_txtCariDataKeyPressed
-
     private void hapus1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hapus1ActionPerformed
         // TODO add your handling code here:
         String tId = txtId.getText();
@@ -509,6 +507,19 @@ public class FrameAnggota extends javax.swing.JFrame {
         new ConfigDB().setShowTable(jtblAnggota, Judul, SQL);
         new ConfigDB().setWidhtTitColumn(jtblAnggota, WidthColumnFilm);
     }//GEN-LAST:event_hapus1ActionPerformed
+
+    private void txtSearchDataKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchDataKeyReleased
+        // TODO add your handling code here:
+        String SQL = "SELECT * FROM anggota WHERE IDAnggota LIKE '%"+txtSearchData.getText()+"%' OR nama LIKE '%"+txtSearchData.getText()+"%'";
+        new ConfigDB().setJudulKolom(jtblAnggota, Judul);
+        new ConfigDB().DataSearch(jtblAnggota, Judul, SQL);
+        new ConfigDB().setWidhtTitColumn(jtblAnggota, WidthColumnFilm);
+    }//GEN-LAST:event_txtSearchDataKeyReleased
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        new ConfigDB().ReportShow("src/Report2/reportAnggota.jrxml", "SELECT * FROM anggota");
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -567,10 +578,10 @@ public class FrameAnggota extends javax.swing.JFrame {
     private javax.swing.JTable jtblAnggota;
     private javax.swing.JButton simpan;
     private javax.swing.JTextField txtAlamat;
-    private javax.swing.JTextField txtCariData;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtJk;
     private javax.swing.JTextField txtNama;
+    private javax.swing.JTextField txtSearchData;
     private javax.swing.JTextField txtStatus;
     private javax.swing.JTextField txtTanggalLahir;
     private javax.swing.JTextField txtTelepon;

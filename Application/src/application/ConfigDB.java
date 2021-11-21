@@ -17,7 +17,15 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 //set witdh column
 import javax.swing.table.TableColumn;
-
+import java.io.File;
+import net.sf.jasperreports.engine.JasperCompileManager; 
+import net.sf.jasperreports.engine.JasperFillManager; 
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.design.JRDesignQuery; 
+import net.sf.jasperreports.engine.design.JasperDesign; 
+import net.sf.jasperreports.engine.xml.JRXmlLoader;  
+import net.sf.jasperreports.view.JasperViewer;
 /**
  *
  * @author myusu
@@ -288,5 +296,25 @@ public class ConfigDB {
             System.out.println(e.toString());
         }
     }
+    
+    //----------------------- PRINT DATA SHOW REPORT
+        public void ReportShow(String laporanFile, String SQL){
+        try {
+            File file = new File(laporanFile);
+            JasperDesign jasDes = JRXmlLoader.load(file);
+
+             JRDesignQuery sqlQuery = new JRDesignQuery();
+             sqlQuery.setText(SQL);
+             jasDes.setQuery(sqlQuery);
+
+             JasperReport JR = JasperCompileManager.compileReport(jasDes);
+             JasperPrint JP = JasperFillManager.fillReport(JR,null,getConnect()); 
+             JasperViewer.viewReport(JP);
+           } catch (Exception e) {
+              JOptionPane.showMessageDialog(null,e.toString());       
+
+        }
+     }
+
    
 }

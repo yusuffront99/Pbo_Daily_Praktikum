@@ -14,10 +14,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
 //set witdh column
 import javax.swing.table.TableColumn;
 import java.io.File;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.table.DefaultTableModel;
 import net.sf.jasperreports.engine.JasperCompileManager; 
 import net.sf.jasperreports.engine.JasperFillManager; 
 import net.sf.jasperreports.engine.JasperPrint;
@@ -181,6 +182,8 @@ public class ConfigDB {
         }
     }
     
+    
+   
     //================ END INSERT DATA
     
    
@@ -315,6 +318,7 @@ public class ConfigDB {
 
         }
      }
-
+        
+    
    
 }
